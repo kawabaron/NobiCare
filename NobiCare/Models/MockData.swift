@@ -68,6 +68,36 @@ enum MockData {
                 RoutineStep(id: "night-back", title: "背中の伸ばし", instruction: "吐く息に合わせて、背中をゆるめます", seconds: 40, targetArea: "背中", poseType: .back),
                 RoutineStep(id: "night-side", title: "体側ストレッチ", instruction: "眠りに向けて、呼吸を深くします", seconds: 40, targetArea: "背中", poseType: .sideBend)
             ]
+        ),
+        Routine(
+            id: "desk-reset",
+            title: "デスクワークリセット",
+            description: "首・肩・背中をまとめてゆるめる",
+            durationSeconds: 180,
+            durationLabel: "3分",
+            place: .chair,
+            targetAreas: ["首", "肩", "背中"],
+            kindnessLevel: 2,
+            steps: [
+                RoutineStep(id: "desk-neck", title: "首の前側をゆるめる", instruction: "あごを少し上げて、息を止めずに伸ばします", seconds: 60, targetArea: "首", poseType: .neckFront),
+                RoutineStep(id: "desk-shoulder", title: "肩を後ろに回す", instruction: "肩甲骨を寄せるように、ゆっくり回します", seconds: 60, targetArea: "肩", poseType: .shoulder),
+                RoutineStep(id: "desk-back", title: "背中を長く伸ばす", instruction: "椅子に座ったまま、背中をふわっと伸ばします", seconds: 60, targetArea: "背中", poseType: .back)
+            ]
+        ),
+        Routine(
+            id: "floor-waist-care",
+            title: "床で腰ゆるケア",
+            description: "腰まわりをゆっくり休ませる",
+            durationSeconds: 180,
+            durationLabel: "3分",
+            place: .floor,
+            targetAreas: ["腰", "背中"],
+            kindnessLevel: 2,
+            steps: [
+                RoutineStep(id: "floor-back", title: "背中を丸めて伸ばす", instruction: "吐く息に合わせて、腰から背中をゆるめます", seconds: 60, targetArea: "腰", poseType: .back),
+                RoutineStep(id: "floor-side", title: "体側をゆっくり伸ばす", instruction: "片側ずつ、気持ちいい範囲で伸ばします", seconds: 60, targetArea: "腰", poseType: .sideBend),
+                RoutineStep(id: "floor-reset", title: "肩の力を抜く", instruction: "最後に肩を軽く回して、呼吸を整えます", seconds: 60, targetArea: "肩", poseType: .shoulder)
+            ]
         )
     ]
 

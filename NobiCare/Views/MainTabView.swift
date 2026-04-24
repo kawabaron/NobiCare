@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @StateObject private var navigation = AppNavigationViewModel()
+    @StateObject private var careLogStore = CareLogStore()
 
     var body: some View {
         TabView(selection: $navigation.selectedTab) {
@@ -27,7 +28,7 @@ struct MainTabView: View {
             .tag(AppTab.progress)
 
             NavigationStack(path: $navigation.settingsPath) {
-                NightModeView()
+                SettingsView()
                     .navigationDestination(for: AppRoute.self, destination: destination)
             }
             .tabItem { Label("設定", systemImage: "gearshape") }
@@ -35,6 +36,7 @@ struct MainTabView: View {
         }
         .tint(NCColors.deepSage)
         .environmentObject(navigation)
+        .environmentObject(careLogStore)
     }
 
     @ViewBuilder

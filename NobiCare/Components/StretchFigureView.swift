@@ -2,6 +2,7 @@ import SwiftUI
 
 struct StretchFigureView: View {
     var pose: StretchPoseType = .neckFront
+    var showsMotionCue = false
 
     var body: some View {
         GeometryReader { proxy in
@@ -15,11 +16,14 @@ struct StretchFigureView: View {
                 arms(width: w, height: h)
                 head(width: w, height: h)
                 highlight(width: w, height: h)
+                if showsMotionCue {
+                    motionCue(width: w, height: h)
+                }
             }
             .frame(width: w, height: h)
         }
         .aspectRatio(1, contentMode: .fit)
-        .accessibilityLabel("ストレッチ人物イラスト")
+        .accessibilityLabel(accessibilityLabel)
     }
 
     private func chair(width w: CGFloat, height h: CGFloat) -> some View {
@@ -131,6 +135,18 @@ struct StretchFigureView: View {
             .offset(x: w * highlightOffsetX, y: h * highlightOffsetY)
     }
 
+    private func motionCue(width w: CGFloat, height h: CGFloat) -> some View {
+        Image(systemName: motionCueIcon)
+            .font(.system(size: max(w * 0.11, 16), weight: .bold))
+            .foregroundColor(NCColors.deepSage)
+            .padding(w * 0.035)
+            .background(Color.white.opacity(0.72))
+            .clipShape(Circle())
+            .overlay(Circle().stroke(NCColors.sage.opacity(0.38), lineWidth: 1))
+            .offset(x: w * motionCueOffsetX, y: h * motionCueOffsetY)
+            .accessibilityHidden(true)
+    }
+
     private var torsoRotation: Double {
         switch pose {
         case .back: return 16
@@ -214,6 +230,42 @@ struct StretchFigureView: View {
         case .shoulder: return -0.12
         case .back: return 0.02
         case .sideBend: return -0.08
+        }
+    }
+
+    private var motionCueIcon: String {
+        switch pose {
+        case .neckFront: return "arrow.up"
+        case .shoulder: return "arrow.clockwise"
+        case .back: return "arrow.up.forward"
+        case .sideBend: return "arrow.left.and.right"
+        }
+    }
+
+    private var motionCueOffsetX: CGFloat {
+        switch pose {
+        case .neckFront: return 0.23
+        case .shoulder: return -0.24
+        case .back: return -0.22
+        case .sideBend: return 0.24
+        }
+    }
+
+    private var motionCueOffsetY: CGFloat {
+        switch pose {
+        case .neckFront: return -0.28
+        case .shoulder: return -0.1
+        case .back: return -0.04
+        case .sideBend: return -0.16
+        }
+    }
+
+    private var accessibilityLabel: String {
+        switch pose {
+        case .neckFront: return "首の前側を伸ばすイラスト"
+        case .shoulder: return "肩を回すイラスト"
+        case .back: return "背中を伸ばすイラスト"
+        case .sideBend: return "体側を伸ばすイラスト"
         }
     }
 }

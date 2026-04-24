@@ -34,6 +34,10 @@ struct BodyAreaCard: View {
             .animation(.spring(response: 0.35, dampingFraction: 0.82), value: isSelected)
         }
         .buttonStyle(PressableButtonStyle(pressedScale: 0.97))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(area.title)、\(area.subtitle)")
+        .accessibilityValue(isSelected ? "選択中" : "未選択")
+        .accessibilityHint("おすすめルーティンを切り替えます")
     }
 
     private var icon: some View {

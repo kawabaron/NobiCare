@@ -2,14 +2,19 @@ import SwiftUI
 
 struct CompletionView: View {
     @EnvironmentObject private var navigation: AppNavigationViewModel
+    @EnvironmentObject private var careLogStore: CareLogStore
     let routine: Routine
     @State private var appeared = false
     @State private var floatConfetti = false
+    @State private var didRecordCompletion = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         ZStack {
             NCColors.ivory.ignoresSafeArea()
-            confetti
+            if !reduceMotion {
+                confetti
+            }
 
             VStack(spacing: 22) {
                 Spacer()
@@ -33,11 +38,11 @@ struct CompletionView: View {
                 SoftCard {
                     VStack(alignment: .leading, spacing: 16) {
                         SectionHeader(title: "今週のふりかえり")
-                        WeeklyDotsView()
+                        WeeklyDotsView(achieved: careLogStore.weeklyAchievements, accentIndex: careLogStore.currentWeekdayIndex)
                         HStack {
-                            metric(title: "今週の合計", value: "4日")
+                            metric(title: "今週の合計", value: "\(careLogStore.totalDaysThisWeek)日")
                             Divider().frame(height: 34)
-                            metric(title: "合計時間", value: "6分")
+                            metric(title: "合計時間", value: "\(careLogStore.totalMinutesThisWeek)分")
                         }
                         Text("小さな積み重ねが、大きな変化をつくります。")
                             .font(NCTypography.caption)
@@ -58,7 +63,9 @@ struct CompletionView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar(.hidden, for: .tabBar)
         .onAppear {
+            recordCompletionIfNeeded()
             appeared = true
+            guard !reduceMotion else { return }
             withAnimation(.easeInOut(duration: 2.2).repeatForever(autoreverses: true)) {
                 floatConfetti = true
             }
@@ -89,5 +96,11 @@ struct CompletionView: View {
                 .foregroundColor(NCColors.charcoal)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func recordCompletionIfNeeded() {
+        guard !didRecordCompletion else { return }
+        careLogStore.recordCompletion(of: routine)
+        didRecordCompletion = true
     }
 }

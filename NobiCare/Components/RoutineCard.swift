@@ -44,6 +44,9 @@ struct RoutineCard: View {
             .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 6)
         }
         .buttonStyle(PressableButtonStyle(pressedScale: 0.98))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(routine.title)、\(routine.description)、\(routine.durationLabel)、\(routine.place.label)")
+        .accessibilityHint("ルーティンを開始します")
     }
 
     private func miniPill(_ text: String) -> some View {

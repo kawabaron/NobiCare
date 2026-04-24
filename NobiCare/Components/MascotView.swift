@@ -11,6 +11,7 @@ struct MascotView: View {
     var mood: MascotMood = .neutral
     var size: CGFloat = 112
     @State private var breathe = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         ZStack {
@@ -22,9 +23,9 @@ struct MascotView: View {
             accent
         }
         .frame(width: size, height: size * 1.22)
-        .scaleEffect(breathe ? 1.018 : 1)
-        .offset(y: mood == .sleepy && breathe ? 4 : (breathe ? -2 : 0))
-        .animation(.easeInOut(duration: mood == .sleepy ? 2.4 : 1.9).repeatForever(autoreverses: true), value: breathe)
+        .scaleEffect(breathe && !reduceMotion ? 1.018 : 1)
+        .offset(y: reduceMotion ? 0 : (mood == .sleepy && breathe ? 4 : (breathe ? -2 : 0)))
+        .animation(reduceMotion ? nil : .easeInOut(duration: mood == .sleepy ? 2.4 : 1.9).repeatForever(autoreverses: true), value: breathe)
         .onAppear { breathe = true }
         .accessibilityLabel("のびのびくん")
     }

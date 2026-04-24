@@ -2,7 +2,8 @@ import SwiftUI
 
 struct NightModeView: View {
     @EnvironmentObject private var navigation: AppNavigationViewModel
-    @State private var reminderOn = true
+    @Environment(\.dismiss) private var dismiss
+    @AppStorage("bedtimeReminderEnabled") private var reminderOn = true
     @State private var appeared = false
 
     var body: some View {
@@ -44,17 +45,35 @@ struct NightModeView: View {
     }
 
     private var header: some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("おやすみなさい")
-                    .font(NCTypography.h1)
-                    .foregroundColor(NCColors.nightText)
-                Text("1日の疲れを、やさしくリセット。")
-                    .font(NCTypography.body)
-                    .foregroundColor(NCColors.nightText.opacity(0.72))
+        VStack(alignment: .leading, spacing: 16) {
+            if navigation.selectedTab == .settings {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(NCColors.nightText)
+                        .frame(width: 42, height: 42)
+                        .background(NCColors.nightCard.opacity(0.94))
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(NCColors.sage.opacity(0.22), lineWidth: 1))
+                }
+                .buttonStyle(PressableButtonStyle())
+                .accessibilityLabel("設定に戻る")
             }
-            Spacer()
-            MascotView(mood: .sleepy, size: 82)
+
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("おやすみなさい")
+                        .font(NCTypography.h1)
+                        .foregroundColor(NCColors.nightText)
+                    Text("1日の疲れを、やさしくリセット。")
+                        .font(NCTypography.body)
+                        .foregroundColor(NCColors.nightText.opacity(0.72))
+                }
+                Spacer()
+                MascotView(mood: .sleepy, size: 82)
+            }
         }
     }
 

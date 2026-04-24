@@ -3,7 +3,9 @@ import SwiftUI
 struct ExecutionView: View {
     @EnvironmentObject private var navigation: AppNavigationViewModel
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var viewModel: ExecutionViewModel
+    @AppStorage("voiceGuideEnabled") private var voiceGuideEnabled = true
     @State private var secondsPulse = false
     @State private var appeared = false
 
@@ -29,6 +31,7 @@ struct ExecutionView: View {
                         .font(NCTypography.body)
                         .foregroundColor(NCColors.softText)
                         .multilineTextAlignment(.center)
+                    guidancePill
                 }
                 .padding(.horizontal, 28)
                 .appear(appeared, delay: 0.04)
@@ -74,6 +77,11 @@ struct ExecutionView: View {
             }
             secondsPulse.toggle()
         }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase != .active {
+                viewModel.pause()
+            }
+        }
     }
 
     private var topBar: some View {
@@ -96,8 +104,10 @@ struct ExecutionView: View {
 
             Spacer()
 
-            Button {} label: {
-                Image(systemName: "speaker.wave.2")
+            Button {
+                voiceGuideEnabled.toggle()
+            } label: {
+                Image(systemName: voiceGuideEnabled ? "speaker.wave.2" : "speaker.slash")
                     .font(.system(size: 16, weight: .medium))
                     .foregroundColor(NCColors.charcoal)
                     .frame(width: 44, height: 44)
@@ -105,7 +115,23 @@ struct ExecutionView: View {
                     .clipShape(Circle())
             }
             .buttonStyle(PressableButtonStyle())
+            .accessibilityLabel(voiceGuideEnabled ? "音声ガイドをオフ" : "音声ガイドをオン")
         }
+    }
+
+    private var guidancePill: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "wind")
+                .font(.system(size: 12, weight: .semibold))
+            Text("\(viewModel.currentStep.targetArea)を意識して、痛みがあれば止める")
+                .font(NCTypography.caption.weight(.semibold))
+        }
+        .foregroundColor(NCColors.deepSage)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(NCColors.sage.opacity(0.15))
+        .clipShape(Capsule())
+        .padding(.top, 4)
     }
 
     private var stepDots: some View {

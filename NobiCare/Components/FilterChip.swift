@@ -26,5 +26,7 @@ struct FilterChip: View {
             .animation(.spring(response: 0.35, dampingFraction: 0.82), value: isSelected)
         }
         .buttonStyle(PressableButtonStyle())
+        .accessibilityLabel(label)
+        .accessibilityValue(isSelected ? "選択中" : "未選択")
     }
 }

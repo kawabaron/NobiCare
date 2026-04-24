@@ -5,11 +5,15 @@ struct RoutineSelectionView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var selectedSeconds = 60
     @State private var selectedPlace: Routine.Place = .chair
+    @State private var showAllRoutines = false
     @State private var appeared = false
 
     private var filteredRoutines: [Routine] {
+        if showAllRoutines {
+            return MockData.routines
+        }
         let exact = MockData.routines.filter { $0.durationSeconds == selectedSeconds && $0.place == selectedPlace }
-        return exact.isEmpty ? MockData.routines.filter { $0.place == selectedPlace || $0.durationSeconds == selectedSeconds } : exact
+        return exact
     }
 
     var body: some View {
@@ -24,7 +28,9 @@ struct RoutineSelectionView: View {
                         Text("時間を選ぶ")
                             .font(NCTypography.caption.weight(.semibold))
                             .foregroundColor(NCColors.softText)
-                        SegmentedTimeControl(selectedSeconds: $selectedSeconds)
+                        SegmentedTimeControl(selectedSeconds: $selectedSeconds) {
+                            showAllRoutines = false
+                        }
                     }
                     .appear(appeared, delay: 0.08)
 
@@ -36,6 +42,7 @@ struct RoutineSelectionView: View {
                             ForEach(Routine.Place.allCases, id: \.self) { place in
                                 FilterChip(label: place.label, iconName: place.iconName, isSelected: selectedPlace == place) {
                                     selectedPlace = place
+                                    showAllRoutines = false
                                 }
                             }
                         }
@@ -43,12 +50,17 @@ struct RoutineSelectionView: View {
                     .appear(appeared, delay: 0.16)
 
                     VStack(alignment: .leading, spacing: 12) {
-                        SectionHeader(title: "おすすめルーティン")
-                        ForEach(Array(filteredRoutines.prefix(3).enumerated()), id: \.element.id) { index, routine in
-                            RoutineCard(routine: routine) {
-                                navigation.push(.execution(routine.id))
+                        SectionHeader(title: showAllRoutines ? "すべてのルーティン" : "おすすめルーティン")
+                        if filteredRoutines.isEmpty {
+                            emptyState
+                                .appear(appeared, delay: 0.24)
+                        } else {
+                            ForEach(Array(filteredRoutines.prefix(showAllRoutines ? filteredRoutines.count : 3).enumerated()), id: \.element.id) { index, routine in
+                                RoutineCard(routine: routine) {
+                                    navigation.push(.execution(routine.id))
+                                }
+                                .appear(appeared, delay: 0.24 + Double(index) * 0.06)
                             }
-                            .appear(appeared, delay: 0.24 + Double(index) * 0.06)
                         }
                     }
                     .transaction { transaction in
@@ -58,7 +70,7 @@ struct RoutineSelectionView: View {
                     }
 
                     Button {
-                        selectedSeconds = 180
+                        showAllRoutines = true
                     } label: {
                         Text("すべてのルーティンを見る")
                             .font(NCTypography.h3)
@@ -97,6 +109,19 @@ struct RoutineSelectionView: View {
             }
 
             SectionHeader(title: "ルーティンを選ぶ", subtitle: "時間と場所を選んで、簡単に開始")
+        }
+    }
+
+    private var emptyState: some View {
+        SoftCard {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("この条件のルーティンは準備中です")
+                    .font(NCTypography.h3)
+                    .foregroundColor(NCColors.charcoal)
+                Text("時間か場所を変えるか、すべてのルーティンから選んでください。")
+                    .font(NCTypography.body)
+                    .foregroundColor(NCColors.softText)
+            }
         }
     }
 }

@@ -23,5 +23,6 @@ struct PrimaryButton: View {
             .shadow(color: .black.opacity(0.08), radius: 12, x: 0, y: 7)
         }
         .buttonStyle(PressableButtonStyle())
+        .accessibilityLabel(title)
     }
 }

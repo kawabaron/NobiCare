@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SegmentedTimeControl: View {
     @Binding var selectedSeconds: Int
+    var onSelectionChanged: () -> Void = {}
     @Namespace private var namespace
     private let options = [60, 120, 180]
 
@@ -10,6 +11,7 @@ struct SegmentedTimeControl: View {
             ForEach(options, id: \.self) { seconds in
                 Button {
                     selectedSeconds = seconds
+                    onSelectionChanged()
                 } label: {
                     Text("\(seconds / 60)分")
                         .font(NCTypography.caption.weight(.semibold))

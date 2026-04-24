@@ -5,6 +5,14 @@ struct HomeView: View {
     @State private var selectedAreaId = MockData.bodyAreas[0].id
     @State private var appeared = false
 
+    private var selectedArea: BodyArea {
+        MockData.bodyAreas.first { $0.id == selectedAreaId } ?? MockData.bodyAreas[0]
+    }
+
+    private var recommendedRoutine: Routine {
+        MockData.routine(id: selectedArea.recommendedRoutineId)
+    }
+
     var body: some View {
         ZStack {
             NCColors.ivory.ignoresSafeArea()
@@ -30,9 +38,7 @@ struct HomeView: View {
                     recommendation
                         .appear(appeared, delay: 0.36)
 
-                    PrimaryButton(title: "1分だけ始める", iconName: "leaf.fill") {
-                        navigation.selectedTab = .routines
-                    }
+                    PrimaryButton(title: "\(recommendedRoutine.durationLabel)だけ始める", iconName: "leaf.fill", action: startRecommendedRoutine)
                     .appear(appeared, delay: 0.44)
                 }
                 .padding(.horizontal, NCSpacing.screen)
@@ -63,15 +69,13 @@ struct HomeView: View {
     }
 
     private var recommendation: some View {
-        PressableCard {
-            navigation.selectedTab = .routines
-        } content: {
+        PressableCard(action: startRecommendedRoutine) {
             VStack(alignment: .leading, spacing: 14) {
-                SectionHeader(title: "あなたへのおすすめ", subtitle: "やさしく始める1分ルーティン")
+                SectionHeader(title: "あなたへのおすすめ", subtitle: recommendedRoutine.title)
                 HStack(spacing: 8) {
-                    Text("首・肩")
-                    Text("1分")
-                    Text("椅子")
+                    Text(recommendedRoutine.targetAreas.joined(separator: "・"))
+                    Text(recommendedRoutine.durationLabel)
+                    Text(recommendedRoutine.place.label)
                 }
                 .font(NCTypography.caption.weight(.semibold))
                 .foregroundColor(NCColors.deepSage)
@@ -81,7 +85,7 @@ struct HomeView: View {
                 .clipShape(Capsule())
 
                 HStack {
-                    Text("今の体に合わせて、短く静かに始めます。")
+                    Text(recommendedRoutine.description)
                         .font(NCTypography.body)
                         .foregroundColor(NCColors.softText)
                     Spacer()
@@ -91,6 +95,11 @@ struct HomeView: View {
                 }
             }
         }
+        .accessibilityHint("\(recommendedRoutine.title)を開始します")
+    }
+
+    private func startRecommendedRoutine() {
+        navigation.push(.execution(recommendedRoutine.id))
     }
 }
 

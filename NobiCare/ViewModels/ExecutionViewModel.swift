@@ -38,6 +38,10 @@ final class ExecutionViewModel: ObservableObject {
         isPaused.toggle()
     }
 
+    func pause() {
+        isPaused = true
+    }
+
     func previous() {
         guard currentStepIndex > 0 else {
             remainingSeconds = currentStep.seconds

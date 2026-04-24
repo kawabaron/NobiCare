@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ProgressView: View {
+    @EnvironmentObject private var careLogStore: CareLogStore
     @State private var appeared = false
 
     var body: some View {
@@ -14,10 +15,10 @@ struct ProgressView: View {
                     SoftCard {
                         VStack(alignment: .leading, spacing: 16) {
                             SectionHeader(title: "今週の記録")
-                            WeeklyDotsView()
+                            WeeklyDotsView(achieved: careLogStore.weeklyAchievements, accentIndex: careLogStore.currentWeekdayIndex)
                             HStack {
-                                metric("4日", caption: "今週の合計")
-                                metric("6分", caption: "整えた時間")
+                                metric("\(careLogStore.totalDaysThisWeek)日", caption: "今週の合計")
+                                metric("\(careLogStore.totalMinutesThisWeek)分", caption: "整えた時間")
                             }
                         }
                     }
@@ -25,17 +26,27 @@ struct ProgressView: View {
 
                     VStack(alignment: .leading, spacing: 12) {
                         SectionHeader(title: "よくケアする部位")
-                        ForEach(Array(areaStats.enumerated()), id: \.element.0) { index, stat in
-                            statRow(title: stat.0, count: stat.1, icon: stat.2)
-                                .appear(appeared, delay: 0.16 + Double(index) * 0.05)
+                        if careLogStore.areaStats.isEmpty {
+                            emptyCard(title: "まだ記録はありません", message: "ルーティンを終えると、よくケアする部位がここに表示されます。")
+                                .appear(appeared, delay: 0.16)
+                        } else {
+                            ForEach(Array(careLogStore.areaStats.prefix(4).enumerated()), id: \.offset) { index, stat in
+                                statRow(title: stat.area, count: "\(stat.count)回", icon: iconName(for: stat.area))
+                                    .appear(appeared, delay: 0.16 + Double(index) * 0.05)
+                            }
                         }
                     }
 
                     VStack(alignment: .leading, spacing: 12) {
                         SectionHeader(title: "最近のルーティン")
-                        ForEach(Array(recent.enumerated()), id: \.element.0) { index, item in
-                            historyRow(title: item.0, time: item.1)
-                                .appear(appeared, delay: 0.34 + Double(index) * 0.05)
+                        if careLogStore.recentEntries.isEmpty {
+                            emptyCard(title: "完了したルーティンが入ります", message: "1分だけでも大丈夫。終えたものから順に残します。")
+                                .appear(appeared, delay: 0.34)
+                        } else {
+                            ForEach(Array(careLogStore.recentEntries.enumerated()), id: \.element.id) { index, entry in
+                                historyRow(entry: entry)
+                                    .appear(appeared, delay: 0.34 + Double(index) * 0.05)
+                            }
                         }
                     }
                 }
@@ -46,19 +57,6 @@ struct ProgressView: View {
         }
         .onAppear { appeared = true }
     }
-
-    private let areaStats: [(String, String, String)] = [
-        ("首", "4回", "person.crop.circle"),
-        ("肩", "3回", "figure.arms.open"),
-        ("腰", "2回", "figure.cooldown"),
-        ("背中", "1回", "figure.flexibility")
-    ]
-
-    private let recent: [(String, String)] = [
-        ("首前面ストレッチ", "今日 10:12"),
-        ("肩まわりストレッチ", "昨日 21:45"),
-        ("腰リフレッシュ", "5/22 07:30")
-    ]
 
     private func metric(_ value: String, caption: String) -> some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -92,26 +90,49 @@ struct ProgressView: View {
         }
     }
 
-    private func historyRow(title: String, time: String) -> some View {
+    private func historyRow(entry: CareLogEntry) -> some View {
         SoftCard {
             HStack(spacing: 12) {
-                StretchFigureView(pose: .neckFront)
+                StretchFigureView(pose: MockData.routine(id: entry.routineId).steps.first?.poseType ?? .neckFront)
                     .frame(width: 48, height: 48)
                     .background(NCColors.ivory)
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(title)
+                    Text(entry.routineTitle)
                         .font(NCTypography.h3)
                         .foregroundColor(NCColors.charcoal)
-                    Text(time)
+                    Text(careLogStore.formattedCompletedAt(entry.completedAt))
                         .font(NCTypography.caption)
                         .foregroundColor(NCColors.softText)
                 }
                 Spacer()
-                Text("1分")
+                Text(MockData.routine(id: entry.routineId).durationLabel)
                     .font(NCTypography.caption.weight(.semibold))
                     .foregroundColor(NCColors.deepSage)
             }
+        }
+    }
+
+    private func emptyCard(title: String, message: String) -> some View {
+        SoftCard {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(title)
+                    .font(NCTypography.h3)
+                    .foregroundColor(NCColors.charcoal)
+                Text(message)
+                    .font(NCTypography.body)
+                    .foregroundColor(NCColors.softText)
+            }
+        }
+    }
+
+    private func iconName(for area: String) -> String {
+        switch area {
+        case "首": return "person.crop.circle"
+        case "肩": return "figure.arms.open"
+        case "腰": return "figure.cooldown"
+        case "背中": return "figure.flexibility"
+        default: return "leaf"
         }
     }
 }
