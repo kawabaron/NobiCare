@@ -56,6 +56,7 @@ struct CompletionView: View {
             .padding(.horizontal, NCSpacing.screen)
         }
         .navigationBarBackButtonHidden(true)
+        .toolbar(.hidden, for: .tabBar)
         .onAppear {
             appeared = true
             withAnimation(.easeInOut(duration: 2.2).repeatForever(autoreverses: true)) {

@@ -31,7 +31,9 @@ struct HomeView: View {
                         .appear(appeared, delay: 0.36)
 
                     PrimaryButton(title: "1分だけ始める", iconName: "leaf.fill") {
-                        navigation.push(.routineSelection)
+                        withAnimation(.spring(response: 0.35, dampingFraction: 0.82)) {
+                            navigation.selectedTab = .routines
+                        }
                     }
                     .appear(appeared, delay: 0.44)
                 }
@@ -64,7 +66,9 @@ struct HomeView: View {
 
     private var recommendation: some View {
         PressableCard {
-            navigation.push(.routineSelection)
+            withAnimation(.spring(response: 0.35, dampingFraction: 0.82)) {
+                navigation.selectedTab = .routines
+            }
         } content: {
             VStack(alignment: .leading, spacing: 14) {
                 SectionHeader(title: "あなたへのおすすめ", subtitle: "やさしく始める1分ルーティン")

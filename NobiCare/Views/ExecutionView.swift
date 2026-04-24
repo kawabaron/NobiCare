@@ -66,6 +66,7 @@ struct ExecutionView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .toolbar(.hidden, for: .tabBar)
         .onAppear { appeared = true }
         .onReceive(timer) { _ in
             if viewModel.tick() {

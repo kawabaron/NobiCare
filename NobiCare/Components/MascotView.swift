@@ -117,9 +117,9 @@ struct MascotView: View {
     private var mouth: some View {
         Group {
             if mood == .happy || mood == .cheering {
-                Image(systemName: "mouth")
-                    .font(.system(size: size * 0.09, weight: .regular))
-                    .foregroundColor(NCColors.charcoal.opacity(0.72))
+                SmileMouth()
+                    .stroke(NCColors.charcoal.opacity(0.72), style: StrokeStyle(lineWidth: 1.6, lineCap: .round))
+                    .frame(width: size * 0.12, height: size * 0.055)
             } else {
                 Capsule()
                     .fill(NCColors.charcoal.opacity(0.72))
@@ -156,4 +156,16 @@ struct MascotView: View {
     private var rightArmRotation: Double { mood == .cheering ? -150 : (mood == .sleepy ? -34 : -6) }
     private var leftArmOffsetY: CGFloat { mood == .cheering ? -size * 0.05 : size * 0.12 }
     private var rightArmOffsetY: CGFloat { mood == .cheering ? -size * 0.2 : size * 0.12 }
+}
+
+private struct SmileMouth: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX, y: rect.midY - rect.height * 0.1))
+        path.addQuadCurve(
+            to: CGPoint(x: rect.maxX, y: rect.midY - rect.height * 0.1),
+            control: CGPoint(x: rect.midX, y: rect.maxY)
+        )
+        return path
+    }
 }

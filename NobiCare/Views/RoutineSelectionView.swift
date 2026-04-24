@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RoutineSelectionView: View {
     @EnvironmentObject private var navigation: AppNavigationViewModel
+    @Environment(\.dismiss) private var dismiss
     @State private var selectedSeconds = 60
     @State private var selectedPlace: Routine.Place = .chair
     @State private var appeared = false
@@ -16,7 +17,7 @@ struct RoutineSelectionView: View {
             NCColors.ivory.ignoresSafeArea()
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 22) {
-                    SectionHeader(title: "ルーティンを選ぶ", subtitle: "時間と場所を選んで、簡単に開始")
+                    routineHeader
                         .appear(appeared, delay: 0)
 
                     VStack(alignment: .leading, spacing: 10) {
@@ -72,7 +73,29 @@ struct RoutineSelectionView: View {
                 .padding(.bottom, 28)
             }
         }
+        .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { appeared = true }
+    }
+
+    private var routineHeader: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            if navigation.selectedTab == .home {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(NCColors.charcoal)
+                        .frame(width: 42, height: 42)
+                        .background(NCColors.cream.opacity(0.94))
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(NCColors.border.opacity(0.8), lineWidth: 1))
+                }
+                .buttonStyle(PressableButtonStyle())
+            }
+
+            SectionHeader(title: "ルーティンを選ぶ", subtitle: "時間と場所を選んで、簡単に開始")
+        }
     }
 }
