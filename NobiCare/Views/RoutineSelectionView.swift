@@ -35,9 +35,7 @@ struct RoutineSelectionView: View {
                         HStack(spacing: 10) {
                             ForEach(Routine.Place.allCases, id: \.self) { place in
                                 FilterChip(label: place.label, iconName: place.iconName, isSelected: selectedPlace == place) {
-                                    withAnimation(.spring(response: 0.35, dampingFraction: 0.82)) {
-                                        selectedPlace = place
-                                    }
+                                    selectedPlace = place
                                 }
                             }
                         }
@@ -53,11 +51,14 @@ struct RoutineSelectionView: View {
                             .appear(appeared, delay: 0.24 + Double(index) * 0.06)
                         }
                     }
+                    .transaction { transaction in
+                        if appeared {
+                            transaction.animation = nil
+                        }
+                    }
 
                     Button {
-                        withAnimation(.spring(response: 0.35, dampingFraction: 0.82)) {
-                            selectedSeconds = 180
-                        }
+                        selectedSeconds = 180
                     } label: {
                         Text("すべてのルーティンを見る")
                             .font(NCTypography.h3)

@@ -9,9 +9,7 @@ struct SegmentedTimeControl: View {
         HStack(spacing: 4) {
             ForEach(options, id: \.self) { seconds in
                 Button {
-                    withAnimation(.spring(response: 0.36, dampingFraction: 0.86)) {
-                        selectedSeconds = seconds
-                    }
+                    selectedSeconds = seconds
                 } label: {
                     Text("\(seconds / 60)分")
                         .font(NCTypography.caption.weight(.semibold))
@@ -33,5 +31,6 @@ struct SegmentedTimeControl: View {
         .background(NCColors.cream)
         .clipShape(Capsule())
         .overlay(Capsule().stroke(NCColors.border, lineWidth: 1))
+        .animation(.spring(response: 0.36, dampingFraction: 0.86), value: selectedSeconds)
     }
 }
