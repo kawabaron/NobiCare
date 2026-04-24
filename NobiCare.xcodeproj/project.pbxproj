@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A00000000000000000000001 /* NobiCareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000001 /* NobiCareApp.swift */; };
+		A00000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000002 /* ContentView.swift */; };
+		A00000000000000000000003 /* NCColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000003 /* NCColors.swift */; };
+		A00000000000000000000004 /* NCTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000004 /* NCTypography.swift */; };
+		A00000000000000000000005 /* NCSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000005 /* NCSpacing.swift */; };
+		A00000000000000000000006 /* BodyArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000006 /* BodyArea.swift */; };
+		A00000000000000000000007 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000007 /* Routine.swift */; };
+		A00000000000000000000008 /* RoutineStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000008 /* RoutineStep.swift */; };
+		A00000000000000000000009 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000009 /* MockData.swift */; };
+		A0000000000000000000000A /* AppNavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000000A /* AppNavigationViewModel.swift */; };
+		A0000000000000000000000B /* ExecutionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000000B /* ExecutionViewModel.swift */; };
+		A0000000000000000000000C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000000C /* PrimaryButton.swift */; };
+		A0000000000000000000000D /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000000D /* PressableButtonStyle.swift */; };
+		A0000000000000000000000E /* PressableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000000E /* PressableCard.swift */; };
+		A0000000000000000000000F /* BodyAreaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000000F /* BodyAreaCard.swift */; };
+		A00000000000000000000010 /* RoutineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000010 /* RoutineCard.swift */; };
+		A00000000000000000000011 /* FilterChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000011 /* FilterChip.swift */; };
+		A00000000000000000000012 /* SegmentedTimeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000012 /* SegmentedTimeControl.swift */; };
+		A00000000000000000000013 /* WeeklyDotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000013 /* WeeklyDotsView.swift */; };
+		A00000000000000000000014 /* CircularProgressTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000014 /* CircularProgressTimerView.swift */; };
+		A00000000000000000000015 /* MascotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000015 /* MascotView.swift */; };
+		A00000000000000000000016 /* StretchFigureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000016 /* StretchFigureView.swift */; };
+		A00000000000000000000017 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000017 /* SectionHeader.swift */; };
+		A00000000000000000000018 /* SoftCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000018 /* SoftCard.swift */; };
+		A00000000000000000000019 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000019 /* MainTabView.swift */; };
+		A0000000000000000000001A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000001A /* HomeView.swift */; };
+		A0000000000000000000001B /* RoutineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000001B /* RoutineSelectionView.swift */; };
+		A0000000000000000000001C /* ExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000001C /* ExecutionView.swift */; };
+		A0000000000000000000001D /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000001D /* CompletionView.swift */; };
+		A0000000000000000000001E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000001E /* ProgressView.swift */; };
+		A0000000000000000000001F /* NightModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000001F /* NightModeView.swift */; };
+		A00000000000000000000020 /* SettingsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000020 /* SettingsPlaceholderView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B00000000000000000000001 /* NobiCareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobiCareApp.swift; sourceTree = "<group>"; };
+		B00000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B00000000000000000000003 /* NCColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCColors.swift; sourceTree = "<group>"; };
+		B00000000000000000000004 /* NCTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCTypography.swift; sourceTree = "<group>"; };
+		B00000000000000000000005 /* NCSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCSpacing.swift; sourceTree = "<group>"; };
+		B00000000000000000000006 /* BodyArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyArea.swift; sourceTree = "<group>"; };
+		B00000000000000000000007 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		B00000000000000000000008 /* RoutineStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStep.swift; sourceTree = "<group>"; };
+		B00000000000000000000009 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		B0000000000000000000000A /* AppNavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationViewModel.swift; sourceTree = "<group>"; };
+		B0000000000000000000000B /* ExecutionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionViewModel.swift; sourceTree = "<group>"; };
+		B0000000000000000000000C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		B0000000000000000000000D /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
+		B0000000000000000000000E /* PressableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableCard.swift; sourceTree = "<group>"; };
+		B0000000000000000000000F /* BodyAreaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyAreaCard.swift; sourceTree = "<group>"; };
+		B00000000000000000000010 /* RoutineCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCard.swift; sourceTree = "<group>"; };
+		B00000000000000000000011 /* FilterChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChip.swift; sourceTree = "<group>"; };
+		B00000000000000000000012 /* SegmentedTimeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTimeControl.swift; sourceTree = "<group>"; };
+		B00000000000000000000013 /* WeeklyDotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyDotsView.swift; sourceTree = "<group>"; };
+		B00000000000000000000014 /* CircularProgressTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressTimerView.swift; sourceTree = "<group>"; };
+		B00000000000000000000015 /* MascotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotView.swift; sourceTree = "<group>"; };
+		B00000000000000000000016 /* StretchFigureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchFigureView.swift; sourceTree = "<group>"; };
+		B00000000000000000000017 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		B00000000000000000000018 /* SoftCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftCard.swift; sourceTree = "<group>"; };
+		B00000000000000000000019 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		B0000000000000000000001A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B0000000000000000000001B /* RoutineSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSelectionView.swift; sourceTree = "<group>"; };
+		B0000000000000000000001C /* ExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionView.swift; sourceTree = "<group>"; };
+		B0000000000000000000001D /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
+		B0000000000000000000001E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		B0000000000000000000001F /* NightModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightModeView.swift; sourceTree = "<group>"; };
+		B00000000000000000000020 /* SettingsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPlaceholderView.swift; sourceTree = "<group>"; };
+		B00000000000000000000021 /* NobiCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NobiCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C00000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D00000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				D00000000000000000000002 /* NobiCare */,
+				D00000000000000000000009 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D00000000000000000000002 /* NobiCare */ = {
+			isa = PBXGroup;
+			children = (
+				B00000000000000000000001 /* NobiCareApp.swift */,
+				B00000000000000000000002 /* ContentView.swift */,
+				D00000000000000000000003 /* Theme */,
+				D00000000000000000000004 /* Models */,
+				D00000000000000000000005 /* ViewModels */,
+				D00000000000000000000006 /* Components */,
+				D00000000000000000000007 /* Views */,
+			);
+			path = NobiCare;
+			sourceTree = "<group>";
+		};
+		D00000000000000000000003 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				B00000000000000000000003 /* NCColors.swift */,
+				B00000000000000000000004 /* NCTypography.swift */,
+				B00000000000000000000005 /* NCSpacing.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		D00000000000000000000004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B00000000000000000000006 /* BodyArea.swift */,
+				B00000000000000000000007 /* Routine.swift */,
+				B00000000000000000000008 /* RoutineStep.swift */,
+				B00000000000000000000009 /* MockData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D00000000000000000000005 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B0000000000000000000000A /* AppNavigationViewModel.swift */,
+				B0000000000000000000000B /* ExecutionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D00000000000000000000006 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B0000000000000000000000C /* PrimaryButton.swift */,
+				B0000000000000000000000D /* PressableButtonStyle.swift */,
+				B0000000000000000000000E /* PressableCard.swift */,
+				B0000000000000000000000F /* BodyAreaCard.swift */,
+				B00000000000000000000010 /* RoutineCard.swift */,
+				B00000000000000000000011 /* FilterChip.swift */,
+				B00000000000000000000012 /* SegmentedTimeControl.swift */,
+				B00000000000000000000013 /* WeeklyDotsView.swift */,
+				B00000000000000000000014 /* CircularProgressTimerView.swift */,
+				B00000000000000000000015 /* MascotView.swift */,
+				B00000000000000000000016 /* StretchFigureView.swift */,
+				B00000000000000000000017 /* SectionHeader.swift */,
+				B00000000000000000000018 /* SoftCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D00000000000000000000007 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B00000000000000000000019 /* MainTabView.swift */,
+				B0000000000000000000001A /* HomeView.swift */,
+				B0000000000000000000001B /* RoutineSelectionView.swift */,
+				B0000000000000000000001C /* ExecutionView.swift */,
+				B0000000000000000000001D /* CompletionView.swift */,
+				B0000000000000000000001E /* ProgressView.swift */,
+				B0000000000000000000001F /* NightModeView.swift */,
+				B00000000000000000000020 /* SettingsPlaceholderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D00000000000000000000009 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B00000000000000000000021 /* NobiCare.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E00000000000000000000001 /* NobiCare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F00000000000000000000003 /* Build configuration list for PBXNativeTarget "NobiCare" */;
+			buildPhases = (
+				C00000000000000000000002 /* Sources */,
+				C00000000000000000000001 /* Frameworks */,
+				C00000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NobiCare;
+			productName = NobiCare;
+			productReference = B00000000000000000000021 /* NobiCare.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E00000000000000000000002 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					E00000000000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = F00000000000000000000004 /* Build configuration list for PBXProject "NobiCare" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ja,
+				Base,
+			);
+			mainGroup = D00000000000000000000001;
+			productRefGroup = D00000000000000000000009 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E00000000000000000000001 /* NobiCare */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C00000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C00000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A00000000000000000000001 /* NobiCareApp.swift in Sources */,
+				A00000000000000000000002 /* ContentView.swift in Sources */,
+				A00000000000000000000003 /* NCColors.swift in Sources */,
+				A00000000000000000000004 /* NCTypography.swift in Sources */,
+				A00000000000000000000005 /* NCSpacing.swift in Sources */,
+				A00000000000000000000006 /* BodyArea.swift in Sources */,
+				A00000000000000000000007 /* Routine.swift in Sources */,
+				A00000000000000000000008 /* RoutineStep.swift in Sources */,
+				A00000000000000000000009 /* MockData.swift in Sources */,
+				A0000000000000000000000A /* AppNavigationViewModel.swift in Sources */,
+				A0000000000000000000000B /* ExecutionViewModel.swift in Sources */,
+				A0000000000000000000000C /* PrimaryButton.swift in Sources */,
+				A0000000000000000000000D /* PressableButtonStyle.swift in Sources */,
+				A0000000000000000000000E /* PressableCard.swift in Sources */,
+				A0000000000000000000000F /* BodyAreaCard.swift in Sources */,
+				A00000000000000000000010 /* RoutineCard.swift in Sources */,
+				A00000000000000000000011 /* FilterChip.swift in Sources */,
+				A00000000000000000000012 /* SegmentedTimeControl.swift in Sources */,
+				A00000000000000000000013 /* WeeklyDotsView.swift in Sources */,
+				A00000000000000000000014 /* CircularProgressTimerView.swift in Sources */,
+				A00000000000000000000015 /* MascotView.swift in Sources */,
+				A00000000000000000000016 /* StretchFigureView.swift in Sources */,
+				A00000000000000000000017 /* SectionHeader.swift in Sources */,
+				A00000000000000000000018 /* SoftCard.swift in Sources */,
+				A00000000000000000000019 /* MainTabView.swift in Sources */,
+				A0000000000000000000001A /* HomeView.swift in Sources */,
+				A0000000000000000000001B /* RoutineSelectionView.swift in Sources */,
+				A0000000000000000000001C /* ExecutionView.swift in Sources */,
+				A0000000000000000000001D /* CompletionView.swift in Sources */,
+				A0000000000000000000001E /* ProgressView.swift in Sources */,
+				A0000000000000000000001F /* NightModeView.swift in Sources */,
+				A00000000000000000000020 /* SettingsPlaceholderView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F00000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F00000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F00000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NobiCare;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kawabaron.NobiCare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F00000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NobiCare;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kawabaron.NobiCare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F00000000000000000000003 /* Build configuration list for PBXNativeTarget "NobiCare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F00000000000000000000005 /* Debug */,
+				F00000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F00000000000000000000004 /* Build configuration list for PBXProject "NobiCare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F00000000000000000000001 /* Debug */,
+				F00000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E00000000000000000000002 /* Project object */;
+}
